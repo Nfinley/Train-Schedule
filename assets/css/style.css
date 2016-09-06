@@ -1,0 +1,21 @@
+
+
+
+.jumbotron {
+	background-color: transparent;
+}
+
+
+th {
+        text-align: center; 
+
+}
+
+.panel {
+	background-color: rgba(243, 243, 243, .6);
+}
+
+.panel-primary>.panel-heading {
+	background-color: grey;
+}
+
