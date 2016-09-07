@@ -45,9 +45,9 @@
             <h2> Don't Be Late!</h2>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+            <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">
+                    <div class="panel-heading text-center">
                         <h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
                     </div>
                     <div class="panel-body">
@@ -93,19 +93,19 @@
                     <div class="form-group">
                         <!-- Employee Name -->
                         <label for="trainName">Train Name</label>
-                        <input class="form-control" type="text" id="trainName">
+                        <input class="form-control" type="text" id="trainName" required="required">
 
                         <!-- Role -->
                         <label for="destination">Destination</label>
-                        <input class="form-control" type="text" id="destination">
+                        <input class="form-control" type="text" id="destination" required="true">
+                        
+                        
+                        <label for="firstTrain">First Train Time (HH:mm - military time)</label>
+                        <input class="form-control"  type="text" id="firstTrain" required="true">
                         
 
-                        <label for="firstTrain">First Train Time (HH:mm - military time)</label>
-                        <input class="form-control" type="text" id="firstTrain">
-
-
                         <label for="frequency">Frequency (min)</label>
-                        <input class="form-control" type="number" id="frequency">
+                        <input class="form-control" type="number" id="frequency" required="true">
 
                         <submit class="btn btn-primary" id="addTrain">Submit</submit>
                         

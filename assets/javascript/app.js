@@ -1,5 +1,6 @@
 // TO DO: 
-// * How to take a user input time and then use it with momentJs and also how make it a number it is currently NaN
+// * Make the First Train input only time
+// Make each  field required 
 
 
 // Config of firebase
@@ -19,7 +20,18 @@ var database = firebase.database();
 var currentTime = moment();
 console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
+// Validation for the first train time input field within HTML
+function validateHhMm(inputField) {
+        var isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(inputField.value);
 
+        if (isValid) {
+            inputField.style.backgroundColor = '#bfa';
+        } else {
+            inputField.style.backgroundColor = '#fba';
+        }
+
+        return isValid;
+};
 
 getDatabase();
 
