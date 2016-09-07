@@ -16,7 +16,13 @@
 
  var database = firebase.database();
 
+// Current time
+ var currentTime = moment();
+ console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
+ // // the next train arrival time
+ // var nextTrain = moment().add(timeTillNextTrain, "minutes");
+ // console.log("Next Arrival Time: " + moment(nextTrain).format("hh:mm"));
 
 getDatabase();
 
@@ -28,11 +34,30 @@ $('#addTrain').on('click', function(){
 
 	console.log(trainName, destination, firstTrain, frequency);
 
+	// Puts the first train time into a usable number and pushed back a year to make sure it happens before current time
+	var firstTimeConverted = moment(firstTrain,"hh:mm").subtract(1, "years");
+		console.log("This is the first train converted:" + firstTimeConverted);
+
+	// Difference between the times
+	var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+	console.log("DIFFERENCE IN TIME: " + diffTime);
+
+	// Take the difference
+	var timeRemainder = diffTime % frequency;
+	console.log("This is the remainder: "+ timeRemainder);
+
+	// Minute until the train
+	var timeTillNextTrain = frequency - timeRemainder; 
+	console.log("MINUTES TILL TRAIN: " + timeTillNextTrain);
+
+
+	
 	database.ref().push({
 		trainName: trainName,
 		destination: destination,
 		firstTrain: firstTrain,
 		frequency: frequency,
+		timeTillNextTrain: timeTillNextTrain,
 		created: firebase.database.ServerValue.TIMESTAMP,
 		modified: firebase.database.ServerValue.TIMESTAMP
 
@@ -47,32 +72,13 @@ function getDatabase(){
 		var databaseObject = snapshot.val();
 		console.log("This is a snapshot of database: " + JSON.stringify(snapshot.val()));
 
-		// Set the firstTrain input to have a standard format
-		// var formatFrequency = moment(frequency).format(h:mm);
-		// console.log("This is correct firstTrain input: " + formatFrequency);
-
-
-		// gets current date (need to get the time from this though)
-		var currentTime = moment().format();
-
-		// set the Minutes Away using relative time (current time diff of first train)
-		// Need to convert this difference of time to minutes.
-		var minutesAway = moment(databaseObject.firstTrain).diff(currentTime, "minutes");
-		console.log("This is first train time: " + JSON.stringify(databaseObject.firstTrain));
-
-
-	
-
-
-
-
 		var row= "";
 		row += "<tr>"+
 				"<td>" + databaseObject.trainName + "</td>" + 
 				"<td>" + databaseObject.destination + "</td>" +
 				"<td>" + databaseObject.frequency + "</td>" +
-				"<td>" + databaseObject.firstTrain + "</td>" +
-				"<td>" + minutesAway + "</td>" +
+				// "<td>" + nextTrain + "</td>" +
+				"<td>" + databaseObject.timeTillNextTrain + "</td>" +
 				"</tr>";
 
 		$('#tbody').append(row);
