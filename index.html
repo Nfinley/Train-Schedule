@@ -14,10 +14,8 @@
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        <!-- Firebase Reference -->
+    <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-
     <!--====== FONTS ===== -->
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,17 +24,35 @@
     <!--====== YOUR STYLE SHEET ===== -->
     <!-- Your style sheet link -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-
-        <!-- ===== MOMENT JS library ======= -->
+    <!-- ===== MOMENT JS library ======= -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/locale/af.js"></script> -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
-
 </head>
 
 <body>
+    <!-- ======== MODAL ====== -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center">ALERT!</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">You cannot leave fields blank. Please complete all fields</p>
+                </div>
+                <div class="modal-footer">
+                    <!-- Buttons on Modal -->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
 
     <!--====== HTML CONTENT ===== -->
     <div class="container-fluid">
@@ -67,14 +83,7 @@
                             </thead>
                             <tbody id="tbody">
                                 <!-- Dynamically generated -->
-                              <!--   <tr>
-                                    <td> Sir </td>
-                                    <td> BA </td>
-                                    <td> 01/01/2016 </td>
-                                    <td> Infinity </td>
-                                    <td> $$$$$$$$ </td>
-                                    <td> $$$$$$$$ </td>
-                                </tr> -->
+                             
                             </tbody>
                         </table>
                     </div>
@@ -82,46 +91,36 @@
             </div>
         </div>
  
-    <!-- EMPLOYEE ADDING PLACE -->
+    <!-- TRAIN ADDING PLACE -->
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong>Add Train</strong></h3>
-                </div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <!-- Employee Name -->
-                        <label for="trainName">Train Name</label>
-                        <input class="form-control" type="text" id="trainName" required="required">
-
-                        <!-- Role -->
-                        <label for="destination">Destination</label>
-                        <input class="form-control" type="text" id="destination" required="true">
-                        
-                        
-                        <label for="firstTrain">First Train Time (HH:mm - military time)</label>
-                        <input class="form-control"  type="text" id="firstTrain" required="true">
-                        
-
-                        <label for="frequency">Frequency (min)</label>
-                        <input class="form-control" type="number" id="frequency" required="true">
-
-                        <submit class="btn btn-primary" id="addTrain">Submit</submit>
-                        
-                        
                     </div>
-
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="trainName">Train Name</label>
+                            <input class="form-control" type="text" id="trainName" required="required">
+                            <label for="destination">Destination</label>
+                            <input class="form-control" type="text" id="destination" required="required">
+                            <label for="firstTrain">First Train Time (HH:mm - military time)</label>
+                            <input class="form-control" type="text" id="firstTrain" required="required">
+                            <label for="frequency">Frequency (min)</label>
+                            <input class="form-control" type="number" id="frequency" required="required">
+                            <submit class="btn btn-primary" id="addTrain">Submit</submit>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
+    </div>
     </div>
     <!-- Reloads the entire page every minute - is to cumbersone -->
-<!--     <script type="text/javascript">
+    <!--     <script type="text/javascript">
     setInterval('window.location.reload()', 60000);
     </script> -->
+    
     <!-- ============================================================ -->
     <!--====== BOOTSTRAP ===== -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -129,20 +128,15 @@
     </script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
     <!--====== UNDERSCORE===== -->
     <!-- underscore JS library CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <!--====== YOUR LOCAL JS FILE ===== -->
     <!-- link to user JS file. Name will change -->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
-   
-
-
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<!--   <script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <!--   <script>
   $(document).ready(function() {
    
         $("#datepicker").datepicker();
@@ -150,8 +144,7 @@
   });
   
   </script> -->
-
-      <!-- link to js file that supports the backstretch piece -->
+    <!-- link to js file that supports the backstretch piece -->
     <script type="text/javascript" src="assets/javascript/javascript.js"></script>
     <!-- Creates a background image that sizes -->
     <script type="text/javascript">
